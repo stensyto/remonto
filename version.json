@@ -1,13 +1,13 @@
 {
   "product": "Remonto",
-  "version": "1.7.1",
+  "version": "1.7.2",
   "date": "2026-09-29",
-  "url": "https://github.com/stensyto/remonto/releases/download/v1.7.1/Remonto-Setup-1.7.1.exe",
-  "size": 23574564,
-  "sha256": "64e4f59d816d81fa3167ec488762616d46d82be905f8d57b8dbdc680ca05188e",
+  "url": "https://github.com/stensyto/remonto/releases/download/v1.7.2/Remonto-Setup-1.7.2.exe",
+  "size": 23506567,
+  "sha256": "f4f52090c2f04566a17f4580fc7b713348d7e4a4687be321702c6d27cd12d7be",
   "notes": [
-    "Ляво поле 25 мм на всички документи при печат и PDF — място за перфориране и папка",
-    "Полето се сменя от Настройки → Цени и номера → „Ляво поле при печат и PDF“"
+    "Колоната „Мярка“ е центрирана във всички таблици — работни карти, оферти, фактури и каталог",
+    "Същото важи при печат и PDF"
   ],
-  "sig": "-1X5Wl2Ze49DjW1adb3i1UFpSqPbQh11NkiLM15mWd9Irw2IGd_o_YsN7_B98t3AXQpcaJMnDZTI0u6TyN3BAw"
+  "sig": "bYvO13bOENXSz8qe9nwpNOOpc_4Ozb37eJ7bC24_DW5C8tCNKX1uJ58agSSIbLKZyooOBQPsYf58PAy7CxAhBA"
 }
