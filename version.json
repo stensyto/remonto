@@ -1,13 +1,15 @@
 {
   "product": "Remonto",
-  "version": "1.8.1",
+  "version": "1.8.2",
   "date": "2026-09-29",
-  "url": "https://github.com/stensyto/remonto/releases/download/v1.8.1/Remonto-Setup-1.8.1.exe",
-  "size": 23525558,
-  "sha256": "92102dabfdbffb0d42923d30a6d0a55445e4d6a7483843a6bff4bb1bbd2406c8",
+  "url": "https://github.com/stensyto/remonto/releases/download/v1.8.2/Remonto-Setup-1.8.2.exe",
+  "size": 23522513,
+  "sha256": "9d7e98ecda84aea6d0143f25208542be98b8089dcb0868eb115297e26fc0b874",
   "notes": [
-    "Данните на фирмата горе на документите са всяко на отделен ред",
-    "По-дългите заглавия на документите (напр. „Сервизна книжка“) заемат по-малко място"
+    "Брояч до „Напомняния“ в менюто — колко клиенти чакат напомняне (червен, ако има пропуснати)",
+    "Бутон „Всички предстоящи“ в Напомняния",
+    "Автоматично напомняне по имейл N дни преди датата за следващо обслужване (включва се от Настройки → Напомняния)",
+    "При срочен лиценз — предупреждение 30 дни преди края"
   ],
-  "sig": "YIQg1DihJlbntyJa6qZzmeQI7BxswAITR2lqnWLaDdhm3oK5XjWBc6Le7juOlQaI7_X1IwBlBBSSvxt7y9TuDg"
+  "sig": "VQ7ZQiWgtL42JUdceVqZ5AvBLNAK7wiIxBTTX7RDP_7veaHMFc7KrOSeMFdU_pJ7bdPHpem2EHyoClUX8BjbCg"
 }
