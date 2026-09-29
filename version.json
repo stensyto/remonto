@@ -1,13 +1,13 @@
 {
   "product": "Remonto",
-  "version": "1.8.5",
+  "version": "1.8.6",
   "date": "2026-09-29",
-  "url": "https://github.com/stensyto/remonto/releases/download/v1.8.5/Remonto-Setup-1.8.5.exe",
-  "size": 23518656,
-  "sha256": "1e0031a2df50d22bf4d0dc31cba68d64e0579054edf8385bd676002e269a9e8f",
+  "url": "https://github.com/stensyto/remonto/releases/download/v1.8.6/Remonto-Setup-1.8.6.exe",
+  "size": 23525297,
+  "sha256": "96ae7c5635aa99ae65612459af94f70e78b243ae8927136bfc1432028caba8d9",
   "notes": [
-    "По-ясен бутон в Напомняния: „Отбележи като уведомен“ и зелено „✔ Уведомен на …“",
-    "Бройката до „Напомняния“ показва колко клиенти чакат да бъдат уведомени"
+    "В Напомняния клиентите, които се броят в числото в менюто, са с етикет „чака“ и правилото е обяснено",
+    "След Viber или SMS програмата пита „Изпратихте ли съобщението?“ и отбелязва клиента като уведомен"
   ],
-  "sig": "zvH-R0ZEynEIBHBktlbSNcUOGwlCbvE8n0YjB41zetJMHj_qBH-V2gxjoH7q5RCRjDwOOyYr9ABhhDukP50aBg"
+  "sig": "I6jMX-pbpqwfjOwVesALoE7eVdRZRNXYxLZ35Zoy--vU42ukOyq7qPUtVgbodojyHUy0t4wDTq24RB9Ij6LvBQ"
 }
