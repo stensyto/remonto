@@ -1,18 +1,13 @@
 {
   "product": "Remonto",
-  "version": "1.8.0",
+  "version": "1.8.1",
   "date": "2026-09-29",
-  "url": "https://github.com/stensyto/remonto/releases/download/v1.8.0/Remonto-Setup-1.8.0.exe",
-  "size": 23514221,
-  "sha256": "f20c61ca72c0870418e2e69c5f6beb4474264d97beef5e5912ad0aff5d0ec682",
+  "url": "https://github.com/stensyto/remonto/releases/download/v1.8.1/Remonto-Setup-1.8.1.exe",
+  "size": 23525558,
+  "sha256": "92102dabfdbffb0d42923d30a6d0a55445e4d6a7483843a6bff4bb1bbd2406c8",
   "notes": [
-    "Сервизна книжка на колата — само завършените ремонти, с или без цени, печат, PDF и имейл",
-    "Служители с роли собственик, приемчик и механик; вход с ПИН, който се включва от Настройки",
-    "Собственикът и приемчикът имат пълен достъп; механикът вижда само карти, коли и календар",
-    "Механик по всеки ред за труд и отчет „Труд по служители“ със сума за изплащане по процент",
-    "Покупна цена на частите по желание и отчет „Печалба“",
-    "Фактура: името, адресът, МОЛ и ДДС номерът се попълват сами по ЕИК от Търговския регистър",
-    "Внасяне на коли, собственици и фирми от Excel или CSV"
+    "Данните на фирмата горе на документите са всяко на отделен ред",
+    "По-дългите заглавия на документите (напр. „Сервизна книжка“) заемат по-малко място"
   ],
-  "sig": "wcuOOBYg29y0riec_KCV2QUDqhELUYESAm2MVa5RP-IeTXHoqHDXMT1svepWew-1GkAufl4ln9TCWFuyWsEhDQ"
+  "sig": "YIQg1DihJlbntyJa6qZzmeQI7BxswAITR2lqnWLaDdhm3oK5XjWBc6Le7juOlQaI7_X1IwBlBBSSvxt7y9TuDg"
 }
