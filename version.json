@@ -1,15 +1,14 @@
 {
   "product": "Remonto",
-  "version": "1.8.2",
+  "version": "1.8.3",
   "date": "2026-09-29",
-  "url": "https://github.com/stensyto/remonto/releases/download/v1.8.2/Remonto-Setup-1.8.2.exe",
-  "size": 23522513,
-  "sha256": "9d7e98ecda84aea6d0143f25208542be98b8089dcb0868eb115297e26fc0b874",
+  "url": "https://github.com/stensyto/remonto/releases/download/v1.8.3/Remonto-Setup-1.8.3.exe",
+  "size": 23525210,
+  "sha256": "c0522c1d6ee9de5542e194b174fc5eb1d0af876270855c8d6947e34c7083a584",
   "notes": [
-    "Брояч до „Напомняния“ в менюто — колко клиенти чакат напомняне (червен, ако има пропуснати)",
-    "Бутон „Всички предстоящи“ в Напомняния",
-    "Автоматично напомняне по имейл N дни преди датата за следващо обслужване (включва се от Настройки → Напомняния)",
-    "При срочен лиценз — предупреждение 30 дни преди края"
+    "В напомнянията вече пише ясно, че номерът е телефонът на сервиза",
+    "Ако при записан час няма въведен час, „в … ч.“ се пропуска",
+    "В Настройки → Напомняния е обяснено какво значи всяка дума в {скоби}"
   ],
-  "sig": "VQ7ZQiWgtL42JUdceVqZ5AvBLNAK7wiIxBTTX7RDP_7veaHMFc7KrOSeMFdU_pJ7bdPHpem2EHyoClUX8BjbCg"
+  "sig": "UmRPV1Lb2xcXkwXOf9VBpmzG-RiyeZvHPWPYAiUfRnp1MpFV_6GCz_6YQNUvucbUz8WV7YgLHyQ8WRoqclb5BA"
 }
