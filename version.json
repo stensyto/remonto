@@ -1,13 +1,18 @@
 {
   "product": "Remonto",
-  "version": "1.7.2",
+  "version": "1.8.0",
   "date": "2026-09-29",
-  "url": "https://github.com/stensyto/remonto/releases/download/v1.7.2/Remonto-Setup-1.7.2.exe",
-  "size": 23506567,
-  "sha256": "f4f52090c2f04566a17f4580fc7b713348d7e4a4687be321702c6d27cd12d7be",
+  "url": "https://github.com/stensyto/remonto/releases/download/v1.8.0/Remonto-Setup-1.8.0.exe",
+  "size": 23514221,
+  "sha256": "f20c61ca72c0870418e2e69c5f6beb4474264d97beef5e5912ad0aff5d0ec682",
   "notes": [
-    "Колоната „Мярка“ е центрирана във всички таблици — работни карти, оферти, фактури и каталог",
-    "Същото важи при печат и PDF"
+    "Сервизна книжка на колата — само завършените ремонти, с или без цени, печат, PDF и имейл",
+    "Служители с роли собственик, приемчик и механик; вход с ПИН, който се включва от Настройки",
+    "Собственикът и приемчикът имат пълен достъп; механикът вижда само карти, коли и календар",
+    "Механик по всеки ред за труд и отчет „Труд по служители“ със сума за изплащане по процент",
+    "Покупна цена на частите по желание и отчет „Печалба“",
+    "Фактура: името, адресът, МОЛ и ДДС номерът се попълват сами по ЕИК от Търговския регистър",
+    "Внасяне на коли, собственици и фирми от Excel или CSV"
   ],
-  "sig": "bYvO13bOENXSz8qe9nwpNOOpc_4Ozb37eJ7bC24_DW5C8tCNKX1uJ58agSSIbLKZyooOBQPsYf58PAy7CxAhBA"
+  "sig": "wcuOOBYg29y0riec_KCV2QUDqhELUYESAm2MVa5RP-IeTXHoqHDXMT1svepWew-1GkAufl4ln9TCWFuyWsEhDQ"
 }
