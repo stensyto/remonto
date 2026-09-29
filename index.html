@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Remonto — програма за автосервиз: работни карти, фактури, история на колите</title>
-<meta name="description" content="Remonto е програма за автосервизи под Windows: работни карти, история на всеки автомобил, оферти, фактури, календар, напомняния и отчети. Работи без интернет, от компютър и телефон в сервиза. 14 дни безплатно.">
+<meta name="description" content="Remonto е програма за автосервизи под Windows: работни карти, история и сервизна книжка на всеки автомобил, оферти, фактури, календар, напомняния, служители и отчети за печалбата. Работи без интернет, от компютър и телефон в сервиза. 14 дни безплатно.">
 <meta property="og:title" content="Remonto — програма за автосервиз">
 <meta property="og:description" content="Работни карти, история на колите, фактури, календар и отчети. 14 дни безплатно.">
 <meta property="og:image" content="https://remonto.pages.dev/img/og.jpg">
@@ -98,6 +98,13 @@ ul.checks li::before{content:"";position:absolute;left:0;top:11px;width:20px;hei
 .notes{margin:12px 0 0;padding-left:20px;color:var(--muted);font-size:15px}
 .smart{margin-top:22px;background:#fff7e0;border:1px solid #f3dfa6;color:#6b4a00;border-radius:12px;padding:14px 18px;font-size:15px}
 .req{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:14px;font-size:14px;color:var(--muted)}
+/* лицензи */
+.plans{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+@media(max-width:760px){.plans{grid-template-columns:1fr 1fr}}
+.plan{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:20px;text-align:center}
+.plan b{display:block;font-size:20px}.plan span{color:var(--muted);font-size:14px}
+.plan.acc{border-color:var(--acc);background:var(--acc-soft)}
+.plans-note{color:var(--muted);font-size:15px;margin:16px 0 0}
 /* въпроси */
 .faq details{background:#fff;border:1px solid var(--line);border-radius:12px;margin-bottom:10px;padding:0 20px}
 .faq summary{cursor:pointer;font-weight:600;padding:16px 0;list-style:none;display:flex;justify-content:space-between;gap:16px}
@@ -115,17 +122,46 @@ form.contact input:focus,form.contact textarea:focus{outline:2px solid #9db6f5;b
 .hp{position:absolute!important;left:-9999px!important}
 #formMsg{font-weight:600}
 #formMsg.ok{color:var(--green)}#formMsg.err{color:#b91c1c}
+/* анимации — само CSS (без JavaScript), само transform/opacity; изключват се при „намалено движение“ */
+@media (prefers-reduced-motion:no-preference){
+  /* заглавната част се плъзга леко нагоре при зареждане — само изместване, без прозрачност (не бави LCP) */
+  @keyframes up{from{translate:0 16px}to{translate:0 0}}
+  .hero h1{animation:up .7s cubic-bezier(.2,.7,.2,1) both}
+  .hero p.lead{animation:up .7s .08s cubic-bezier(.2,.7,.2,1) both}
+  .hero .cta,.hero .note{animation:up .7s .16s cubic-bezier(.2,.7,.2,1) both}
+  .shot{animation:up .9s .1s cubic-bezier(.2,.7,.2,1) both}
+  /* при посочване */
+  .feat,.plan,.step{transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease}
+  .feat:hover,.plan:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(15,23,42,.09);border-color:#f1c4b1}
+  .feat svg{transition:transform .3s ease}.feat:hover svg{transform:scale(1.12) rotate(-4deg)}
+  .step:hover{transform:translateY(-4px)}
+  .gal figure{transition:box-shadow .3s ease,transform .3s ease}
+  .gal figure img{transition:transform .5s ease}
+  .gal figure:hover{box-shadow:0 16px 36px rgba(15,23,42,.12);transform:translateY(-3px)}
+  .gal figure:hover img{transform:scale(1.025)}
+  .btn.acc{box-shadow:0 6px 18px rgba(194,65,12,.28)}
+  .hero .btn.acc{animation:glow 2.8s 1.2s ease-in-out 2}
+  @keyframes glow{50%{box-shadow:0 6px 26px rgba(255,138,92,.55)}}
+  /* плавно появяване при превъртане (Chrome, Edge, Opera, Android); в другите браузъри всичко си е видимо */
+  @supports (animation-timeline:view()){
+    /* translate/scale (отделни свойства), за да не пречат на повдигането при посочване, което е с transform */
+    @keyframes rv{from{opacity:0;translate:0 28px;scale:.98}to{opacity:1;translate:0 0;scale:1}}
+    .feat,.gal figure,.step,.plan,.split>*{animation:rv linear both;animation-timeline:view();animation-range:entry 0% entry 90%}
+    @keyframes hdr{to{box-shadow:0 6px 22px rgba(0,0,0,.28)}}
+    header.top{animation:hdr linear both;animation-timeline:scroll();animation-range:0 90px}
+  }
+}
 footer{background:var(--dark);color:#9aa6ba;padding:30px 0;font-size:14px}
 footer .w{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 footer a{color:#c9d1de}
 </style>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Remonto","description":"Програма за автосервизи: работни карти, история на автомобилите, оферти, фактури, календар и отчети.","applicationCategory":"BusinessApplication","operatingSystem":"Windows 10, Windows 11","inLanguage":"bg","url":"https://remonto.pages.dev/","image":"https://remonto.pages.dev/img/og.jpg"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Remonto","description":"Програма за автосервизи: работни карти, история и сервизна книжка на автомобилите, оферти, фактури с попълване по ЕИК, календар, напомняния, служители с вход с ПИН и отчети за печалбата.","applicationCategory":"BusinessApplication","operatingSystem":"Windows 10, Windows 11","inLanguage":"bg","url":"https://remonto.pages.dev/","image":"https://remonto.pages.dev/img/og.jpg"}</script>
 </head>
 <body>
 
 <header class="top"><div class="w">
   <a class="logo" href="#"><i>R</i>Remonto</a>
-  <nav><a href="#vazmozhnosti">Възможности</a><a href="#snimki">Снимки</a><a href="#kak">Как работи</a><a href="#vaprosi">Въпроси</a><a href="#kontakt">Контакт</a></nav>
+  <nav><a href="#vazmozhnosti">Възможности</a><a href="#snimki">Снимки</a><a href="#kak">Как работи</a><a href="#licenzi">Лицензи</a><a href="#vaprosi">Въпроси</a><a href="#kontakt">Контакт</a></nav>
   <a class="btn acc" href="#izteglyane">Изтегли</a>
 </div></header>
 
@@ -150,19 +186,19 @@ footer a{color:#c9d1de}
   <p class="sub">Направена заедно с действащ автосервиз — без излишни менюта и с думите, които ползвате всеки ден.</p>
   <div class="grid3">
     <div class="feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="14" y2="17"/></svg>
-      <h3>Работни карти</h3><p>Рег. номер, рама, пробег, части с каталожни номера и цени, труд по часове. Статуси „Приета → В ремонт → Готова → Платена“.</p></div>
+      <h3>Работни карти</h3><p>Рег. номер, рама, пробег, части с каталожни номера и цени, труд по часове и кой механик го е извършил. Статуси „Приета → В ремонт → Готова → Платена“.</p></div>
     <div class="feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17h14M3 13l2-6h14l2 6v4H3z"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></svg>
-      <h3>История на всяка кола</h3><p>Щом напишете номера, излиза кога е идвала, при какъв пробег, какво е сменено и колко е платено.</p></div>
+      <h3>История и сервизна книжка</h3><p>Щом напишете номера, излиза всичко правено по колата. Сервизна книжка за клиента — с или без цени, с място за печат, като PDF или по имейл.</p></div>
     <div class="feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg>
       <h3>Подсказки при писане</h3><p>Около 280 части и 380 дейности на български, всички марки и модели. Пишете „смяна накл“ и избирате — цената се попълва сама.</p></div>
     <div class="feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 2v20l3-2 3 2 3-2 3 2 3-2 1 .7V2l-1 .7-3-2-3 2-3-2-3 2-3-2z"/><line x1="8" y1="8" x2="16" y2="8"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
-      <h3>Фактури и известия</h3><p>Фактура от работната карта с един бутон, кредитни и дебитни известия, сума словом, износ в Excel за счетоводителя.</p></div>
+      <h3>Фактури и известия</h3><p>Фактура от работната карта с един бутон. Пишете ЕИК — името, адресът, МОЛ и ДДС номерът идват сами от Търговския регистър. Износ в Excel за счетоводителя.</p></div>
     <div class="feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
       <h3>Оферти</h3><p>Предварителна калкулация за клиента. Когато я одобри — става работна карта с един бутон.</p></div>
     <div class="feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
       <h3>Календар</h3><p>Записване на час за седмицата. Когато колата дойде — „Приеми“ и работната карта е готова.</p></div>
     <div class="feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
-      <h3>Напомняния и Viber</h3><p>Кой трябва да дойде за обслужване, „колата е готова“ — с готов текст за Viber, SMS или имейл.</p></div>
+      <h3>Напомняния</h3><p>Кой трябва да дойде за обслужване — с брояч в менюто и готов текст за Viber, SMS или имейл. Имейлите може да тръгват и сами, дни преди датата.</p></div>
     <div class="feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/></svg>
       <h3>Плащания и дългове</h3><p>Частични плащания, каса за деня и списък кой колко дължи.</p></div>
     <div class="feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
@@ -172,7 +208,13 @@ footer a{color:#c9d1de}
     <div class="feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="M14 2v4M10 2v4M4 10h16"/><path d="M8 14h3v3H8z"/></svg>
       <h3>PDF и имейл</h3><p>Работна карта, оферта или фактура като PDF — изпратена на клиента директно от програмата.</p></div>
     <div class="feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
-      <h3>Отчети</h3><p>Оборот за месеца и годината, части и труд, брой коли — на екрана или на хартия.</p></div>
+      <h3>Отчети и печалба</h3><p>Оборот за месеца и годината, печалба по покупните цени на частите, труд по механици и сума за изплащане по процент.</p></div>
+    <div class="feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+      <h3>Служители и вход с ПИН</h3><p>Собственик, приемчик и механик — всеки влиза със свой ПИН. Механикът вижда само картите, без пари и покупни цени.</p></div>
+    <div class="feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      <h3>Внасяне от Excel</h3><p>Колите, собствениците и фирмите от друга програма или таблица — наведнъж, от Excel или CSV. Програмата сама познава колоните.</p></div>
+    <div class="feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+      <h3>Архив всеки ден</h3><p>Пазят се последните 30 дни и по един архив от всеки от последните 12 месеца. По желание — копие в Google Drive, OneDrive или на флашка.</p></div>
   </div>
 </div></section>
 
@@ -204,12 +246,24 @@ footer a{color:#c9d1de}
       <ul class="checks">
         <li>Работи без интернет — само мрежата в сервиза</li>
         <li>Данните остават при вас, не се изпращат никъде</li>
-        <li>Архив всеки ден, пазят се последните 30</li>
+        <li>Архив всеки ден — 30 дни назад и по един за всеки от 12 месеца</li>
         <li>Лесно местене на нов компютър</li>
       </ul>
     </div>
     <div class="phone"><img src="/img/telefon-600.22a84dba.webp" srcset="/img/telefon-300.19d244bd.webp 300w, /img/telefon-600.22a84dba.webp 600w" sizes="284px" width="600" height="1298" loading="lazy" decoding="async" alt="Работна карта на телефон"></div>
   </div>
+</div></section>
+
+<section id="licenzi" style="padding-bottom:0"><div class="w">
+  <h2>Лицензи</h2>
+  <p class="sub">Първите 14 дни са безплатни, с всички възможности. След това избирате лиценз за вашия сервиз — за срок или безсрочен. Един лиценз важи за главния компютър; другите компютри и телефоните в сервиза не се плащат отделно.</p>
+  <div class="plans">
+    <div class="plan"><b>1 месец</b><span>срочен</span></div>
+    <div class="plan"><b>6 месеца</b><span>срочен</span></div>
+    <div class="plan"><b>1 година</b><span>срочен</span></div>
+    <div class="plan acc"><b>Безсрочен</b><span>плащате веднъж</span></div>
+  </div>
+  <p class="plans-note">Цени — по запитване. <a href="#kontakt">Пишете ни</a> с кода на компютъра от Настройки → Лиценз и ще получите ключ. При срочен лиценз програмата ви напомня 30 дни преди края.</p>
 </div></section>
 
 <section id="izteglyane"><div class="w">
@@ -228,7 +282,10 @@ footer a{color:#c9d1de}
 <section id="vaprosi" style="padding-top:0"><div class="w faq">
   <h2>Често задавани въпроси</h2>
   <p class="sub"></p>
-  <details><summary>Трябва ли интернет?</summary><p>Не. Програмата работи в мрежата на сервиза. Интернет е нужен само за изпращане на имейли и за проверка за нови версии.</p></details>
+  <details><summary>Трябва ли интернет?</summary><p>Не. Програмата работи в мрежата на сервиза. Интернет е нужен само за имейлите, за попълване на фирма по ЕИК и за проверка за нови версии.</p></details>
+  <details><summary>Какви лицензи има?</summary><p>За 1 месец, 6 месеца, 1 година или безсрочен. Лицензът е за главния компютър на сервиза — другите компютри и телефоните в мрежата не се плащат. При срочен лиценз програмата предупреждава 30 дни преди края, а новият ключ се въвежда в Настройки → Лиценз, без да се губят данни.</p></details>
+  <details><summary>Може ли всеки служител да има свой вход?</summary><p>Да. В Настройки → Служители добавяте собственика, приемчика и механиците с ПИН код и включвате входа с ПИН. Механикът вижда само работните карти, колите и календара — без пари, фактури и покупни цени.</p></details>
+  <details><summary>Как да прехвърля клиентите и колите от старата програма?</summary><p>Запишете ги от старата програма или таблица като Excel (.xlsx) или CSV и ги внесете от Настройки → „Внеси от файл“. Програмата сама познава колоните и не презаписва колите, които вече са въведени.</p></details>
   <details><summary>На колко компютъра и телефона може да се ползва?</summary><p>Инсталира се на един главен компютър. От другите компютри, таблети и телефони в същата мрежа се отваря през браузъра, без ограничение на броя.</p></details>
   <details><summary>Какво става след 14-те дни?</summary><p>Всичко въведено остава. Програмата продължава да показва и печата данните, а за въвеждане на нови е нужен лицензен ключ. Свържете се с нас през формата по-долу.</p></details>
   <details><summary>Мога ли да пренеса данните на нов компютър?</summary><p>Да. От Настройки → Архив сваляте един файл и го възстановявате на новия компютър. За новия компютър е нужен нов ключ — пишете ни.</p></details>
