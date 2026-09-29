@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="bg">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Remonto — програма за автосервиз: работни карти, фактури, история на колите</title>
+<meta name="description" content="Remonto е програма за автосервизи под Windows: работни карти, история на всеки автомобил, оферти, фактури, календар, напомняния и отчети. Работи без интернет, от компютър и телефон в сервиза. 14 дни безплатно.">
+<meta property="og:title" content="Remonto — програма за автосервиз">
+<meta property="og:description" content="Работни карти, история на колите, фактури, календар и отчети. 14 дни безплатно.">
+<meta property="og:image" content="/img/og.jpg">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#1d2433">
+<link rel="icon" href="/favicon.png">
+<link rel="preload" as="image" href="/img/karta.webp">
+<style>
+:root{--ink:#1f2430;--muted:#5f6878;--line:#e3e6eb;--bg:#f5f6f8;--panel:#fff;--dark:#1d2433;--dark2:#2c3548;--acc:#d9481f;--acc-soft:#fdeee8;--green:#15803d;--blue:#2563eb;--radius:14px}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 "Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif}
+img{max-width:100%;height:auto;display:block}
+a{color:var(--blue)}
+.w{max-width:1160px;margin:0 auto;padding:0 20px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 22px;border-radius:10px;font-weight:600;font-size:16px;text-decoration:none;border:1px solid transparent;cursor:pointer;font-family:inherit;transition:filter .15s,transform .15s}
+.btn:hover{filter:brightness(1.08)}.btn:active{transform:translateY(1px)}
+.btn.acc{background:var(--acc);color:#fff}
+.btn.ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.35)}
+.btn.line{background:#fff;color:var(--ink);border-color:#d3d8df}
+.btn[aria-disabled=true]{opacity:.6;pointer-events:none}
+/* горна лента */
+header.top{position:sticky;top:0;z-index:20;background:rgba(29,36,51,.97);backdrop-filter:blur(6px);color:#fff}
+header.top .w{display:flex;align-items:center;gap:20px;height:62px}
+.logo{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none;font-weight:700;font-size:20px;letter-spacing:.2px}
+.logo i{display:grid;place-items:center;width:34px;height:34px;border-radius:9px;background:var(--acc);font-style:normal;font-size:18px}
+header nav{display:flex;gap:4px;margin-left:auto}
+header nav a{color:#c9d1de;text-decoration:none;padding:8px 12px;border-radius:8px;font-size:15px}
+header nav a:hover{background:var(--dark2);color:#fff}
+header .btn{padding:9px 16px;font-size:15px}
+@media(max-width:860px){header nav{display:none}header .btn{margin-left:auto}}
+/* заглавна част */
+.hero{background:var(--dark);color:#fff;padding:56px 0 0}
+.shotwrap{background:linear-gradient(180deg,var(--dark) 50%,var(--bg) 50%);padding:40px 0 10px}
+.hero h1{font-size:clamp(30px,4.2vw,46px);line-height:1.15;margin:0 0 16px;max-width:900px;letter-spacing:-.5px}
+.hero h1 span{color:#ff8a5c}
+.hero p.lead{font-size:clamp(17px,2vw,20px);color:#c9d1de;max-width:720px;margin:0 0 26px}
+.hero .cta{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:12px}
+.hero .note{font-size:14px;color:#9aa6ba}
+.shot{border-radius:12px;overflow:hidden;box-shadow:0 30px 70px rgba(15,23,42,.35),0 0 0 1px rgba(15,23,42,.08);background:#fff}
+.shot .bar{height:30px;background:#e9ecf1;display:flex;align-items:center;gap:6px;padding:0 12px}
+.shot .bar b{width:11px;height:11px;border-radius:50%;background:#cfd4dc}
+/* секции */
+section{padding:70px 0}
+section h2{font-size:clamp(26px,3.2vw,36px);line-height:1.2;margin:0 0 10px;letter-spacing:-.3px}
+section .sub{color:var(--muted);font-size:18px;margin:0 0 36px;max-width:720px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+@media(max-width:900px){.grid3{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.grid3{grid-template-columns:1fr}}
+.feat{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:22px}
+.feat svg{width:30px;height:30px;color:var(--acc);margin-bottom:10px}
+.feat h3{margin:0 0 6px;font-size:18px}
+.feat p{margin:0;color:var(--muted);font-size:15px}
+/* галерия */
+.gal{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+@media(max-width:760px){.gal{grid-template-columns:1fr}}
+.gal figure{margin:0;background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;cursor:zoom-in}
+.gal figure img{aspect-ratio:16/10;object-fit:cover;object-position:top left;width:100%;border-bottom:1px solid var(--line)}
+.gal figcaption{padding:12px 16px;font-size:15px}
+.gal figcaption b{display:block;font-size:16px}
+.gal figcaption span{color:var(--muted)}
+dialog.zoom{border:0;padding:0;background:transparent;max-width:96vw;max-height:94vh}
+dialog.zoom::backdrop{background:rgba(10,14,22,.85)}
+dialog.zoom img{max-width:96vw;max-height:94vh;border-radius:8px;cursor:zoom-out}
+/* стъпки */
+.dark{background:var(--dark);color:#fff}
+.dark .sub{color:#aeb8ca}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;counter-reset:s}
+@media(max-width:860px){.steps{grid-template-columns:1fr}}
+.step{background:var(--dark2);border-radius:var(--radius);padding:24px;position:relative}
+.step::before{counter-increment:s;content:counter(s);display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:var(--acc);font-weight:700;margin-bottom:12px}
+.step h3{margin:0 0 6px;font-size:18px}.step p{margin:0;color:#c9d1de;font-size:15px}
+.split{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+@media(max-width:860px){.split{grid-template-columns:1fr}}
+.phone{max-width:300px;margin:0 auto;border-radius:30px;overflow:hidden;border:8px solid #0f141e;box-shadow:0 24px 60px rgba(0,0,0,.35)}
+ul.checks{list-style:none;padding:0;margin:0}
+ul.checks li{padding:7px 0 7px 32px;position:relative}
+ul.checks li::before{content:"";position:absolute;left:0;top:11px;width:20px;height:20px;border-radius:50%;background:var(--green) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E") center/12px no-repeat}
+/* изтегляне */
+.dl{background:#fff;border:1px solid var(--line);border-radius:18px;padding:34px;display:grid;grid-template-columns:1fr auto;gap:30px;align-items:center}
+@media(max-width:760px){.dl{grid-template-columns:1fr;padding:24px}}
+.dl h2{margin-bottom:6px}
+.ver{color:var(--muted);font-size:15px}
+.ver b{color:var(--ink)}
+.notes{margin:12px 0 0;padding-left:20px;color:var(--muted);font-size:15px}
+.smart{margin-top:22px;background:#fff7e0;border:1px solid #f3dfa6;color:#6b4a00;border-radius:12px;padding:14px 18px;font-size:15px}
+.req{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:14px;font-size:14px;color:var(--muted)}
+/* въпроси */
+.faq details{background:#fff;border:1px solid var(--line);border-radius:12px;margin-bottom:10px;padding:0 20px}
+.faq summary{cursor:pointer;font-weight:600;padding:16px 0;list-style:none;display:flex;justify-content:space-between;gap:16px}
+.faq summary::after{content:"+";color:var(--acc);font-size:22px;line-height:1}
+.faq details[open] summary::after{content:"−"}
+.faq summary::-webkit-details-marker{display:none}
+.faq details p{margin:0 0 16px;color:var(--muted)}
+/* контакт */
+form.contact{background:#fff;border:1px solid var(--line);border-radius:18px;padding:28px;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:640px){form.contact{grid-template-columns:1fr;padding:20px}}
+form.contact label{display:flex;flex-direction:column;gap:5px;font-size:14px;font-weight:600;color:var(--muted)}
+form.contact .full{grid-column:1/-1}
+form.contact input,form.contact textarea{font:inherit;font-size:16px;padding:11px 12px;border:1px solid #d3d8df;border-radius:9px;color:var(--ink);background:#fff;width:100%}
+form.contact input:focus,form.contact textarea:focus{outline:2px solid #9db6f5;border-color:#9db6f5}
+.hp{position:absolute!important;left:-9999px!important}
+#formMsg{font-weight:600}
+#formMsg.ok{color:var(--green)}#formMsg.err{color:#b91c1c}
+footer{background:var(--dark);color:#9aa6ba;padding:30px 0;font-size:14px}
+footer .w{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+footer a{color:#c9d1de}
+</style>
+</head>
+<body>
+
+<header class="top"><div class="w">
+  <a class="logo" href="#"><i>R</i>Remonto</a>
+  <nav><a href="#vazmozhnosti">Възможности</a><a href="#snimki">Снимки</a><a href="#kak">Как работи</a><a href="#vaprosi">Въпроси</a><a href="#kontakt">Контакт</a></nav>
+  <a class="btn acc" href="#izteglyane">Изтегли</a>
+</div></header>
+
+<div class="hero"><div class="w">
+  <h1>Програма за автосервиз — <span>работни карти, история на колите и фактури</span> на едно място</h1>
+  <p class="lead">Въвеждате регистрационния номер и виждате всичко, което е правено по колата. Печатате работна карта с вашето лого, издавате фактура с един бутон и знаете кой ви дължи пари.</p>
+  <div class="cta">
+    <a class="btn acc" href="#izteglyane">⬇ Изтегли — 14 дни безплатно</a>
+    <a class="btn ghost" href="#kontakt">Свържете се с нас</a>
+  </div>
+  <div class="note">Windows 10 и 11 · работи без интернет · от компютър, таблет и телефон в сервиза</div>
+</div></div>
+<div class="shotwrap"><div class="w">
+  <div class="shot"><div class="bar"><b></b><b></b><b></b></div>
+    <img src="/img/karta.webp" width="1600" height="1000" alt="Работна карта в Remonto — автомобил, клиент, части, труд и сума">
+  </div>
+</div></div>
+
+<section id="vazmozhnosti"><div class="w">
+  <h2>Всичко, от което има нужда един сервиз</h2>
+  <p class="sub">Направена заедно с действащ автосервиз — без излишни менюта и с думите, които ползвате всеки ден.</p>
+  <div class="grid3">
+    <div class="feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="14" y2="17"/></svg>
+      <h3>Работни карти</h3><p>Рег. номер, рама, пробег, части с каталожни номера и цени, труд по часове. Статуси „Приета → В ремонт → Готова → Платена“.</p></div>
+    <div class="feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17h14M3 13l2-6h14l2 6v4H3z"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></svg>
+      <h3>История на всяка кола</h3><p>Щом напишете номера, излиза кога е идвала, при какъв пробег, какво е сменено и колко е платено.</p></div>
+    <div class="feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg>
+      <h3>Подсказки при писане</h3><p>Около 280 части и 380 дейности на български, всички марки и модели. Пишете „смяна накл“ и избирате — цената се попълва сама.</p></div>
+    <div class="feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 2v20l3-2 3 2 3-2 3 2 3-2 1 .7V2l-1 .7-3-2-3 2-3-2-3 2-3-2z"/><line x1="8" y1="8" x2="16" y2="8"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+      <h3>Фактури и известия</h3><p>Фактура от работната карта с един бутон, кредитни и дебитни известия, сума словом, износ в Excel за счетоводителя.</p></div>
+    <div class="feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+      <h3>Оферти</h3><p>Предварителна калкулация за клиента. Когато я одобри — става работна карта с един бутон.</p></div>
+    <div class="feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      <h3>Календар</h3><p>Записване на час за седмицата. Когато колата дойде — „Приеми“ и работната карта е готова.</p></div>
+    <div class="feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+      <h3>Напомняния и Viber</h3><p>Кой трябва да дойде за обслужване, „колата е готова“ — с готов текст за Viber, SMS или имейл.</p></div>
+    <div class="feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/></svg>
+      <h3>Плащания и дългове</h3><p>Частични плащания, каса за деня и списък кой колко дължи.</p></div>
+    <div class="feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+      <h3>Протокол и снимки</h3><p>Състояние при приемане — гориво, ключове, щети, вещи. Снимки от телефона направо в картата.</p></div>
+    <div class="feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      <h3>Гаранционни карти</h3><p>Гаранция за сменените части и труда, с ваши условия, отпечатана с един бутон.</p></div>
+    <div class="feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="M14 2v4M10 2v4M4 10h16"/><path d="M8 14h3v3H8z"/></svg>
+      <h3>PDF и имейл</h3><p>Работна карта, оферта или фактура като PDF — изпратена на клиента директно от програмата.</p></div>
+    <div class="feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+      <h3>Отчети</h3><p>Оборот за месеца и годината, части и труд, брой коли — на екрана или на хартия.</p></div>
+  </div>
+</div></section>
+
+<section id="snimki" style="padding-top:10px"><div class="w">
+  <h2>Как изглежда</h2>
+  <p class="sub">Натиснете снимка, за да я видите в цял размер.</p>
+  <div class="gal">
+    <figure><img src="/img/tablo.webp" width="1600" height="1000" loading="lazy" alt="Табло"><figcaption><b>Табло</b><span>Колите в сервиза, записаните за днес, оборот и дългове.</span></figcaption></figure>
+    <figure><img src="/img/istoria.webp" width="1600" height="1000" loading="lazy" alt="История на автомобил"><figcaption><b>История на колата</b><span>Всички посещения, части и суми по един автомобил.</span></figcaption></figure>
+    <figure><img src="/img/pechat-karta.webp" width="1000" height="874" loading="lazy" alt="Отпечатана работна карта"><figcaption><b>Отпечатана работна карта</b><span>С вашето лого и данни, на лист A4.</span></figcaption></figure>
+    <figure><img src="/img/pechat-faktura.webp" width="1000" height="733" loading="lazy" alt="Отпечатана фактура"><figcaption><b>Фактура</b><span>Със всички задължителни реквизити и сума словом.</span></figcaption></figure>
+    <figure><img src="/img/podskazki.webp" width="1400" height="551" loading="lazy" style="object-position:left bottom" alt="Подсказки при писане"><figcaption><b>Подсказки при писане</b><span>Части, дейности, марки и модели — излизат, докато пишете.</span></figcaption></figure>
+    <figure><img src="/img/kalendar.webp" width="1600" height="637" loading="lazy" alt="Календар"><figcaption><b>Календар</b><span>Записани часове за седмицата.</span></figcaption></figure>
+  </div>
+</div></section>
+
+<section id="kak" class="dark"><div class="w">
+  <h2>Как работи</h2>
+  <p class="sub">Без абонамент за „облак“ и без интернет — данните на сервиза са на вашия компютър.</p>
+  <div class="steps">
+    <div class="step"><h3>Инсталирате на един компютър</h3><p>Главният компютър в сервиза пази всички данни и прави архив всеки ден.</p></div>
+    <div class="step"><h3>Отваряте от всички устройства</h3><p>Другите компютри, таблетите и телефоните в мрежата на сервиза я отварят през браузъра — без инсталиране.</p></div>
+    <div class="step"><h3>Обновява се сама</h3><p>Когато излезе нова версия, програмата ви показва какво е новото и я инсталира с един бутон. Данните се запазват.</p></div>
+  </div>
+  <div class="split" style="margin-top:50px">
+    <div>
+      <h2 style="font-size:28px">В сервиза — и от телефона</h2>
+      <p class="sub" style="margin-bottom:18px">Механикът отваря картата на телефона, добавя части и снима щетите направо в нея.</p>
+      <ul class="checks">
+        <li>Работи без интернет — само мрежата в сервиза</li>
+        <li>Данните остават при вас, не се изпращат никъде</li>
+        <li>Архив всеки ден, пазят се последните 30</li>
+        <li>Лесно местене на нов компютър</li>
+      </ul>
+    </div>
+    <div class="phone"><img src="/img/telefon.webp" width="600" height="1298" loading="lazy" alt="Работна карта на телефон"></div>
+  </div>
+</div></section>
+
+<section id="izteglyane"><div class="w">
+  <div class="dl">
+    <div>
+      <h2>Изтеглете Remonto</h2>
+      <div class="ver" id="verLine">Последна версия: <b>…</b></div>
+      <ul class="notes" id="verNotes" hidden></ul>
+      <div class="req"><span>✔ Windows 10 или 11</span><span>✔ 14 дни безплатно, без регистрация</span><span>✔ Данните остават при вас</span></div>
+    </div>
+    <div><a class="btn acc" id="dlBtn" href="https://github.com/stensyto/remonto/releases/latest" rel="nofollow">⬇ Изтегли инсталатора</a></div>
+  </div>
+  <div class="smart"><b>При първото пускане</b> Windows може да покаже синьо прозорче „Windows защити компютъра ви“. Това е нормално за нови програми. Натиснете <b>„Още информация“</b> → <b>„Изпълни въпреки това“</b>. После — „Напред“, „Инсталирай“, „Край“.</div>
+</div></section>
+
+<section id="vaprosi" style="padding-top:0"><div class="w faq">
+  <h2>Често задавани въпроси</h2>
+  <p class="sub"></p>
+  <details><summary>Трябва ли интернет?</summary><p>Не. Програмата работи в мрежата на сервиза. Интернет е нужен само за изпращане на имейли и за проверка за нови версии.</p></details>
+  <details><summary>На колко компютъра и телефона може да се ползва?</summary><p>Инсталира се на един главен компютър. От другите компютри, таблети и телефони в същата мрежа се отваря през браузъра, без ограничение на броя.</p></details>
+  <details><summary>Какво става след 14-те дни?</summary><p>Всичко въведено остава. Програмата продължава да показва и печата данните, а за въвеждане на нови е нужен лицензен ключ. Свържете се с нас през формата по-долу.</p></details>
+  <details><summary>Мога ли да пренеса данните на нов компютър?</summary><p>Да. От Настройки → Архив сваляте един файл и го възстановявате на новия компютър. За новия компютър е нужен нов ключ — пишете ни.</p></details>
+  <details><summary>Как се обновява?</summary><p>Програмата сама проверява за нови версии и показва лента „Излезе нова версия“. С бутона „Инсталирай“ новата версия се сваля, проверява и инсталира. Данните се запазват.</p></details>
+  <details><summary>Замества ли касовия апарат?</summary><p>Не. Remonto издава работни карти и фактури, но не е касова система и не замества фискалното устройство. За плащания в брой продължавате да издавате касов бон както досега.</p></details>
+</div></section>
+
+<section id="kontakt" style="padding-top:0"><div class="w">
+  <h2>Свържете се с нас</h2>
+  <p class="sub">Въпрос, демонстрация или лиценз — напишете ни и ще ви отговорим.</p>
+  <form class="contact" id="cform" novalidate>
+    <label>Име<input name="name" required autocomplete="name"></label>
+    <label>Сервиз / фирма<input name="company" autocomplete="organization"></label>
+    <label>Телефон<input name="phone" type="tel" autocomplete="tel"></label>
+    <label>Имейл<input name="email" type="email" autocomplete="email"></label>
+    <label class="full">Съобщение<textarea name="message" rows="5" required></textarea></label>
+    <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off">
+    <div class="full" style="display:flex;gap:16px;align-items:center;flex-wrap:wrap">
+      <button class="btn acc" type="submit" id="cbtn">Изпрати</button>
+      <span id="formMsg"></span>
+    </div>
+    <div class="full" style="font-size:13px;color:var(--muted)">Оставете телефон или имейл, за да можем да ви отговорим. Данните се използват само за отговор на запитването.</div>
+  </form>
+</div></section>
+
+<footer><div class="w">
+  <span>© <span id="yr">2026</span> Remonto — програма за автосервизи</span>
+  <span><a href="#izteglyane">Изтегли</a> · <a href="#kontakt">Контакт</a></span>
+</div></footer>
+
+<dialog class="zoom" id="zoom"><img alt=""></dialog>
+
+<script>
+// Ключ от web3forms.com — там отиват съобщенията от формата (на вашия имейл)
+const FORM_KEY = '';
+const $ = s => document.querySelector(s);
+$('#yr').textContent = new Date().getFullYear();
+
+// последна версия от version.json
+fetch('/version.json', { cache: 'no-cache' }).then(r => r.ok ? r.json() : null).then(v => {
+  if (!v || !v.url) return;
+  const d = v.date ? v.date.split('-').reverse().join('.') : '';
+  $('#verLine').innerHTML = 'Последна версия: <b>' + v.version + '</b>' + (d ? ' от ' + d : '') + ' · ' + (v.size / 1048576).toFixed(1).replace('.', ',') + ' MB';
+  $('#dlBtn').href = v.url;
+  if (v.notes && v.notes.length) { const ul = $('#verNotes'); ul.innerHTML = '<li style="list-style:none;margin-left:-20px;font-weight:600;color:var(--ink)">Какво е новото:</li>' + v.notes.slice(0, 6).map(n => '<li>' + n.replace(/[&<>]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c])) + '</li>').join(''); ul.hidden = false; }
+}).catch(() => {});
+
+// снимки в цял размер
+const zoom = $('#zoom');
+document.querySelectorAll('.gal figure').forEach(f => f.addEventListener('click', () => { const i = f.querySelector('img'); zoom.querySelector('img').src = i.src; zoom.querySelector('img').alt = i.alt; zoom.showModal(); }));
+zoom.addEventListener('click', () => zoom.close());
+
+// форма за контакт
+$('#cform').addEventListener('submit', async e => {
+  e.preventDefault();
+  const f = e.target, msg = $('#formMsg'), btn = $('#cbtn');
+  const data = Object.fromEntries(new FormData(f));
+  msg.className = ''; msg.textContent = '';
+  if (data.botcheck) return;
+  if (!data.name.trim() || !data.message.trim()) { msg.className = 'err'; msg.textContent = 'Попълнете име и съобщение.'; return; }
+  if (!data.phone.trim() && !data.email.trim()) { msg.className = 'err'; msg.textContent = 'Оставете телефон или имейл за връзка.'; return; }
+  if (!FORM_KEY) { msg.className = 'err'; msg.textContent = 'Формата още не е настроена.'; return; }
+  btn.setAttribute('aria-disabled', 'true'); btn.textContent = 'Изпращам…';
+  try {
+    const r = await fetch('https://api.web3forms.com/submit', { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify({ access_key: FORM_KEY, subject: 'Remonto — запитване от ' + data.name, from_name: 'Сайт Remonto', ...data, botcheck: false }) });
+    const j = await r.json();
+    if (!r.ok || !j.success) throw new Error(j.message || 'грешка');
+    f.reset(); msg.className = 'ok'; msg.textContent = '✔ Благодарим! Ще се свържем с вас скоро.';
+  } catch (err) { msg.className = 'err'; msg.textContent = 'Съобщението не беше изпратено. Опитайте отново след малко.'; }
+  btn.removeAttribute('aria-disabled'); btn.textContent = 'Изпрати';
+});
+</script>
+</body>
+</html>

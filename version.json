@@ -1,0 +1,14 @@
+{
+  "product": "Remonto",
+  "version": "1.6.0",
+  "date": "2026-09-28",
+  "url": "https://github.com/stensyto/remonto/releases/download/v1.6.0/Remonto-Setup-1.6.0.exe",
+  "size": 23574909,
+  "sha256": "dcf65d3b8330f5d2966e9c1a1c40428f059428c37e01a8bb9202ec9e213d8790",
+  "notes": [
+    "Подсказки при писане: около 280 части и 380 дейности, всички марки и модели",
+    "Марката и годината се предлагат по рамата (VIN)",
+    "Проверка за нова версия и инсталиране с един бутон (Настройки → Обновления)"
+  ],
+  "sig": "dPshMlPbaL3KZL54tIeP28oLqcl97EMxazDzvs61t96OvveksJYx0r8fRfxgzqd67QykktAxw2olsFhYl9BIAQ"
+}
