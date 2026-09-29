@@ -1,12 +1,13 @@
 {
   "product": "Remonto",
-  "version": "1.8.4",
+  "version": "1.8.5",
   "date": "2026-09-29",
-  "url": "https://github.com/stensyto/remonto/releases/download/v1.8.4/Remonto-Setup-1.8.4.exe",
-  "size": 23525843,
-  "sha256": "425f405d8de982b149f8e2f1dff42a5c9152e7764c1f175f3407b31a2d57c5a3",
+  "url": "https://github.com/stensyto/remonto/releases/download/v1.8.5/Remonto-Setup-1.8.5.exe",
+  "size": 23518656,
+  "sha256": "1e0031a2df50d22bf4d0dc31cba68d64e0579054edf8385bd676002e269a9e8f",
   "notes": [
-    "В Напомняния бутонът вдясно вече е „Уведомено“ (досега „Напомнено“)"
+    "По-ясен бутон в Напомняния: „Отбележи като уведомен“ и зелено „✔ Уведомен на …“",
+    "Бройката до „Напомняния“ показва колко клиенти чакат да бъдат уведомени"
   ],
-  "sig": "vt9NkuArk4QrMa3LZ_LcKnZkR19-ogv3kKs-LuXYYSCiCKgLuPp_1l1dt5TQUR2C51N-RHt6Tbx3XImBBayEBg"
+  "sig": "zvH-R0ZEynEIBHBktlbSNcUOGwlCbvE8n0YjB41zetJMHj_qBH-V2gxjoH7q5RCRjDwOOyYr9ABhhDukP50aBg"
 }
