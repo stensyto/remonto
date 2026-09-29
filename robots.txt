@@ -1,2 +1,4 @@
 User-agent: *
 Allow: /
+
+Sitemap: https://remonto.pages.dev/sitemap.xml
