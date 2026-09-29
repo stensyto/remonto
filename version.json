@@ -1,14 +1,13 @@
 {
   "product": "Remonto",
-  "version": "1.7.0",
+  "version": "1.7.1",
   "date": "2026-09-29",
-  "url": "https://github.com/stensyto/remonto/releases/download/v1.7.0/Remonto-Setup-1.7.0.exe",
-  "size": 23576009,
-  "sha256": "90aeffb70a2f1de70f79eee8d2eaaf075e15ad838249f2c143fac217aa5cbfbf",
+  "url": "https://github.com/stensyto/remonto/releases/download/v1.7.1/Remonto-Setup-1.7.1.exe",
+  "size": 23574564,
+  "sha256": "64e4f59d816d81fa3167ec488762616d46d82be905f8d57b8dbdc680ca05188e",
   "notes": [
-    "Подобрени архиви: пазят се последните 30 дни и по един архив за всеки от последните 12 месеца",
-    "Копие на архива извън компютъра — в Google Drive, OneDrive, флашка или външен диск (Настройки → Архив)",
-    "Предупреждение, ако копието извън компютъра не е направено няколко дни"
+    "Ляво поле 25 мм на всички документи при печат и PDF — място за перфориране и папка",
+    "Полето се сменя от Настройки → Цени и номера → „Ляво поле при печат и PDF“"
   ],
-  "sig": "-1_TFqGmKjwcvdtXgtkwAI8vc_I2iDVzrFRC3C7bbzV4JFo_zYe8uzfOJQBE3qTPk1T9BMAAszAK3suTRba6AA"
+  "sig": "-1X5Wl2Ze49DjW1adb3i1UFpSqPbQh11NkiLM15mWd9Irw2IGd_o_YsN7_B98t3AXQpcaJMnDZTI0u6TyN3BAw"
 }
