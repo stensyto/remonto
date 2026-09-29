@@ -1,14 +1,14 @@
 {
   "product": "Remonto",
-  "version": "1.6.0",
-  "date": "2026-09-28",
-  "url": "https://github.com/stensyto/remonto/releases/download/v1.6.0/Remonto-Setup-1.6.0.exe",
-  "size": 23574909,
-  "sha256": "dcf65d3b8330f5d2966e9c1a1c40428f059428c37e01a8bb9202ec9e213d8790",
+  "version": "1.7.0",
+  "date": "2026-09-29",
+  "url": "https://github.com/stensyto/remonto/releases/download/v1.7.0/Remonto-Setup-1.7.0.exe",
+  "size": 23576009,
+  "sha256": "90aeffb70a2f1de70f79eee8d2eaaf075e15ad838249f2c143fac217aa5cbfbf",
   "notes": [
-    "Подсказки при писане: около 280 части и 380 дейности, всички марки и модели",
-    "Марката и годината се предлагат по рамата (VIN)",
-    "Проверка за нова версия и инсталиране с един бутон (Настройки → Обновления)"
+    "Подобрени архиви: пазят се последните 30 дни и по един архив за всеки от последните 12 месеца",
+    "Копие на архива извън компютъра — в Google Drive, OneDrive, флашка или външен диск (Настройки → Архив)",
+    "Предупреждение, ако копието извън компютъра не е направено няколко дни"
   ],
-  "sig": "dPshMlPbaL3KZL54tIeP28oLqcl97EMxazDzvs61t96OvveksJYx0r8fRfxgzqd67QykktAxw2olsFhYl9BIAQ"
+  "sig": "-1_TFqGmKjwcvdtXgtkwAI8vc_I2iDVzrFRC3C7bbzV4JFo_zYe8uzfOJQBE3qTPk1T9BMAAszAK3suTRba6AA"
 }
