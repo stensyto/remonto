@@ -34,9 +34,10 @@ a{color:var(--blue)}
 .btn[aria-disabled=true]{opacity:.6;pointer-events:none}
 /* горна лента */
 header.top{position:sticky;top:0;z-index:20;background:rgba(29,36,51,.97);backdrop-filter:blur(6px);color:#fff}
-header.top .w{display:flex;align-items:center;gap:20px;height:62px}
+header.top .w{display:flex;align-items:center;gap:20px;height:70px}
 .logo{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none;font-weight:700;font-size:20px;letter-spacing:.2px}
-.logo img{display:block;height:34px;width:auto}
+.logo img{display:block;height:44px;width:auto}
+@media(max-width:600px){.logo img{height:38px}}
 header nav{display:flex;gap:4px;margin-left:auto}
 header nav a{color:#c9d1de;text-decoration:none;padding:8px 12px;border-radius:8px;font-size:15px}
 header nav a:hover{background:var(--dark2);color:#fff}
@@ -160,7 +161,7 @@ footer a{color:#c9d1de}
 <body>
 
 <header class="top"><div class="w">
-  <a class="logo" href="/" aria-label="RemontoPro — към началото"><img src="/img/logo.615aee1d.svg" alt="RemontoPro" width="148" height="34"></a>
+  <a class="logo" href="/" aria-label="RemontoPro — към началото"><img src="/img/logo.615aee1d.svg" alt="RemontoPro" width="192" height="44"></a>
   <nav><a href="/" data-to="vazmozhnosti">Възможности</a><a href="/" data-to="snimki">Снимки</a><a href="/" data-to="kak">Как работи</a><a href="/" data-to="licenzi">Лицензи</a><a href="/" data-to="vaprosi">Въпроси</a><a href="/" data-to="kontakt">Контакт</a></nav>
   <a class="btn acc" href="/" data-to="izteglyane">Изтегли</a>
 </div></header>
