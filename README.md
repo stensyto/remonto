@@ -1,6 +1,6 @@
-# Remonto
+# RemontoPro
 
-Сайт на програмата Remonto (Cloudflare Pages).
+Сайт на програмата RemontoPro (Cloudflare Pages).
 
 - `index.html` — страницата
 - `version.json` — последна версия, подписана; по него програмите разбират за обновления

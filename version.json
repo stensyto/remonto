@@ -1,12 +1,12 @@
 {
   "product": "Remonto",
-  "version": "1.11.3",
+  "version": "1.12.0",
   "date": "2026-10-01",
-  "url": "https://github.com/stensyto/remonto/releases/download/v1.11.3/Remonto-Setup-1.11.3.exe",
-  "size": 23664836,
-  "sha256": "4723194a807b62eac0e8a5b34d3d517b714355dea714f38d9f440f1c49566825",
+  "url": "https://github.com/stensyto/remonto/releases/download/v1.12.0/RemontoPro-Setup-1.12.0.exe",
+  "size": 23667377,
+  "sha256": "309cf28a722e2bdaf8a106efe1e45034c5892287153fa658f9de6040b0775fb4",
   "notes": [
-    "До счетоводителя се пращат само фактурите и известията и стойностите в тях — без оборота по работни карти"
+    "Програмата вече се казва RemontoPro — данните, лицензът и настройките са си същите"
   ],
-  "sig": "Hxh_ZvtuuYn8QNLxYoJvS-FqPb9otGD5DJlNAMYaZ_9W3VV-3yiZm3FLvHWxN9yqetOfZ-TNc8ZmUHP2hWZkDA"
+  "sig": "A45qU39MNdXv7EDslJt26z6cai0YRSOMHRtdw51BvwyhS955XnUqhFd_BbaYv5QpYCiDI7RzJgeU9WkNJR1AAA"
 }
