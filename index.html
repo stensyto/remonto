@@ -160,7 +160,7 @@ footer a{color:#c9d1de}
 <body>
 
 <header class="top"><div class="w">
-  <a class="logo" href="#" aria-label="RemontoPro — към началото"><img src="/img/logo.615aee1d.svg" alt="RemontoPro" width="148" height="34"></a>
+  <a class="logo" href="/" aria-label="RemontoPro — към началото"><img src="/img/logo.615aee1d.svg" alt="RemontoPro" width="148" height="34"></a>
   <nav><a href="#vazmozhnosti">Възможности</a><a href="#snimki">Снимки</a><a href="#kak">Как работи</a><a href="#licenzi">Лицензи</a><a href="#vaprosi">Въпроси</a><a href="#kontakt">Контакт</a></nav>
   <a class="btn acc" href="#izteglyane">Изтегли</a>
 </div></header>
@@ -325,6 +325,9 @@ footer a{color:#c9d1de}
 const FORM_KEY = 'dc0d2757-6013-45f3-a1ca-801fca2cfb9f';
 const $ = s => document.querySelector(s);
 $('#yr').textContent = new Date().getFullYear();
+
+// логото: нагоре без презареждане и без # в адреса
+$('.logo').addEventListener('click', e => { e.preventDefault(); history.replaceState(null, '', '/'); scrollTo({ top: 0, behavior: 'smooth' }); });
 
 // последна версия от version.json
 const loadVer = () => fetch('/version.json', { cache: 'no-cache' }).then(r => r.ok ? r.json() : null).then(v => {
