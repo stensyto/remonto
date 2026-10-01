@@ -146,5 +146,18 @@ footer a{color:#c9d1de}
 </main>
 
 <footer><div class="w"><span>© 2026 RemontoPro — програма за автосервизи</span><span><a href="/usloviya">Общи условия</a> · <a href="/poveritelnost">Поверителност</a> · <a href="/#kontakt">Контакт</a></span></div></footer>
+<script>
+// връзките към части от страницата: превъртане без # в адреса
+document.addEventListener('click', e => {
+  const a = e.target.closest('a[href^="#"]'); if (!a) return;
+  const el = document.getElementById(a.getAttribute('href').slice(1)); if (!el) return;
+  e.preventDefault(); history.replaceState(null, '', location.pathname + location.search); el.scrollIntoView({ behavior: 'smooth' });
+});
+// дошли сме със стар линк (/#kontakt): отиваме на мястото и махаме # от адреса
+if (location.hash) {
+  const go = () => { const el = document.getElementById(decodeURIComponent(location.hash.slice(1))); history.replaceState(null, '', location.pathname + location.search); if (el) el.scrollIntoView({ behavior: 'instant' }); };
+  go();
+}
+</script>
 </body>
 </html>
