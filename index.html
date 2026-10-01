@@ -161,8 +161,8 @@ footer a{color:#c9d1de}
 
 <header class="top"><div class="w">
   <a class="logo" href="/" aria-label="RemontoPro — към началото"><img src="/img/logo.615aee1d.svg" alt="RemontoPro" width="148" height="34"></a>
-  <nav><a href="#vazmozhnosti">Възможности</a><a href="#snimki">Снимки</a><a href="#kak">Как работи</a><a href="#licenzi">Лицензи</a><a href="#vaprosi">Въпроси</a><a href="#kontakt">Контакт</a></nav>
-  <a class="btn acc" href="#izteglyane">Изтегли</a>
+  <nav><a href="/" data-to="vazmozhnosti">Възможности</a><a href="/" data-to="snimki">Снимки</a><a href="/" data-to="kak">Как работи</a><a href="/" data-to="licenzi">Лицензи</a><a href="/" data-to="vaprosi">Въпроси</a><a href="/" data-to="kontakt">Контакт</a></nav>
+  <a class="btn acc" href="/" data-to="izteglyane">Изтегли</a>
 </div></header>
 
 <main id="main">
@@ -170,8 +170,8 @@ footer a{color:#c9d1de}
   <h1>Програма за автосервиз — <span>работни карти, история на колите и фактури</span> на едно място</h1>
   <p class="lead">Въвеждате регистрационния номер и виждате всичко, което е правено по колата. Печатате работна карта с вашето лого, издавате фактура с един бутон и знаете кой ви дължи пари.</p>
   <div class="cta">
-    <a class="btn acc" href="#izteglyane">⬇ Изтегли — 14 дни безплатно</a>
-    <a class="btn ghost" href="#kontakt">Свържете се с нас</a>
+    <a class="btn acc" href="/" data-to="izteglyane">⬇ Изтегли — 14 дни безплатно</a>
+    <a class="btn ghost" href="/" data-to="kontakt">Свържете се с нас</a>
   </div>
   <div class="note">Windows 10 и 11 · работи без интернет · от компютър, таблет и телефон в сервиза</div>
 </div></div>
@@ -263,7 +263,7 @@ footer a{color:#c9d1de}
     <div class="plan"><b>1 година</b><span>срочен</span></div>
     <div class="plan acc"><b>Безсрочен</b><span>плащате веднъж</span></div>
   </div>
-  <p class="plans-note">Цени — по запитване. <a href="#kontakt">Пишете ни</a> с кода на компютъра от Настройки → Лиценз и ще получите ключ. При срочен лиценз програмата ви напомня 30 дни преди края.</p>
+  <p class="plans-note">Цени — по запитване. <a href="/" data-to="kontakt">Пишете ни</a> с кода на компютъра от Настройки → Лиценз и ще получите ключ. При срочен лиценз програмата ви напомня 30 дни преди края.</p>
 </div></section>
 
 <section id="izteglyane"><div class="w">
@@ -315,7 +315,7 @@ footer a{color:#c9d1de}
 
 <footer><div class="w">
   <span>© <span id="yr">2026</span> RemontoPro — програма за автосервизи</span>
-  <span><a href="#izteglyane">Изтегли</a> · <a href="#kontakt">Контакт</a> · <a href="mailto:info@remontopro.com">info@remontopro.com</a> · <a href="/usloviya">Общи условия</a> · <a href="/poveritelnost">Поверителност</a></span>
+  <span><a href="/" data-to="izteglyane">Изтегли</a> · <a href="/" data-to="kontakt">Контакт</a> · <a href="mailto:info@remontopro.com">info@remontopro.com</a> · <a href="/usloviya">Общи условия</a> · <a href="/poveritelnost">Поверителност</a></span>
 </div></footer>
 
 <dialog class="zoom" id="zoom"><img alt=""></dialog>
@@ -326,16 +326,23 @@ const FORM_KEY = 'dc0d2757-6013-45f3-a1ca-801fca2cfb9f';
 const $ = s => document.querySelector(s);
 $('#yr').textContent = new Date().getFullYear();
 
-// връзките към части от страницата: превъртане без # в адреса
+// връзки към части от страница: адресът остава чист (без # и без ?)
 document.addEventListener('click', e => {
-  const a = e.target.closest('a[href^="#"]'); if (!a) return;
-  const el = document.getElementById(a.getAttribute('href').slice(1)); if (!el) return;
-  e.preventDefault(); history.replaceState(null, '', location.pathname + location.search); el.scrollIntoView({ behavior: 'smooth' });
+  const a = e.target.closest('a[data-to]');
+  if (!a || e.button || e.ctrlKey || e.metaKey || e.shiftKey || e.altKey) return;
+  const id = a.dataset.to, to = new URL(a.href).pathname, el = document.getElementById(id);
+  e.preventDefault();
+  if (to === location.pathname && el) { history.replaceState(null, '', location.pathname); el.scrollIntoView({ behavior: 'smooth' }); }
+  else location.href = to + '?to=' + encodeURIComponent(id);
 });
-// дошли сме със стар линк (/#kontakt): отиваме на мястото и махаме # от адреса
-if (location.hash) {
-  const go = () => { const el = document.getElementById(decodeURIComponent(location.hash.slice(1))); history.replaceState(null, '', location.pathname + location.search); if (el) el.scrollIntoView({ behavior: 'instant' }); };
-  go();
+// дошли сме с /?to=kontakt или със стар линк /#kontakt: отиваме на мястото и чистим адреса
+{
+  const p = new URLSearchParams(location.search), id = p.get('to') || decodeURIComponent(location.hash.slice(1));
+  if (id) {
+    p.delete('to'); const q = p.toString();
+    history.replaceState(null, '', location.pathname + (q ? '?' + q : ''));
+    const el = document.getElementById(id); if (el) el.scrollIntoView({ behavior: 'instant' });
+  }
 }
 
 // логото: нагоре без презареждане и без # в адреса

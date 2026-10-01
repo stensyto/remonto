@@ -47,7 +47,7 @@ footer a{color:#c9d1de}
 
 <!-- КОГАТО ИМА ФИРМА: тук да се добави раздел „Данни за търговеца“ — име на фирмата, ЕИК, адрес, имейл и телефон (чл. 4 от Закона за електронната търговия). -->
 <h2>1. Кой предоставя програмата</h2>
-<p>Сайтът и програмата RemontoPro се предоставят от собственика на RemontoPro (наричан по-долу „ние“). За връзка с нас — <a href="mailto:info@remontopro.com">info@remontopro.com</a> или <a href="/#kontakt">формата за контакт</a> на сайта.</p>
+<p>Сайтът и програмата RemontoPro се предоставят от собственика на RemontoPro (наричан по-долу „ние“). За връзка с нас — <a href="mailto:info@remontopro.com">info@remontopro.com</a> или <a href="/" data-to="kontakt">формата за контакт</a> на сайта.</p>
 
 <h2>2. Сайтът</h2>
 <ul>
@@ -63,7 +63,7 @@ footer a{color:#c9d1de}
 <li>Първите <b>14 дни</b> от инсталирането програмата работи с всички възможности.</li>
 <li>След пробния период всичко въведено остава. Програмата продължава да показва и печата данните, но за въвеждане на нови е нужен лицензен ключ.</li>
 <li>Пробният период е един за компютър. Преинсталирането не го започва отначало.</li>
-<li>При инсталиране приемате <a href="#sporazumenie">лицензионното споразумение</a> (текстът му е в края на тази страница).</li>
+<li>При инсталиране приемате <a href="/usloviya" data-to="sporazumenie">лицензионното споразумение</a> (текстът му е в края на тази страница).</li>
 </ul>
 
 <h2>4. Лицензи</h2>
@@ -145,18 +145,25 @@ footer a{color:#c9d1de}
 </div>
 </main>
 
-<footer><div class="w"><span>© 2026 RemontoPro — програма за автосервизи</span><span><a href="/usloviya">Общи условия</a> · <a href="/poveritelnost">Поверителност</a> · <a href="/#kontakt">Контакт</a> · <a href="mailto:info@remontopro.com">info@remontopro.com</a></span></div></footer>
+<footer><div class="w"><span>© 2026 RemontoPro — програма за автосервизи</span><span><a href="/usloviya">Общи условия</a> · <a href="/poveritelnost">Поверителност</a> · <a href="/" data-to="kontakt">Контакт</a> · <a href="mailto:info@remontopro.com">info@remontopro.com</a></span></div></footer>
 <script>
-// връзките към части от страницата: превъртане без # в адреса
+// връзки към части от страница: адресът остава чист (без # и без ?)
 document.addEventListener('click', e => {
-  const a = e.target.closest('a[href^="#"]'); if (!a) return;
-  const el = document.getElementById(a.getAttribute('href').slice(1)); if (!el) return;
-  e.preventDefault(); history.replaceState(null, '', location.pathname + location.search); el.scrollIntoView({ behavior: 'smooth' });
+  const a = e.target.closest('a[data-to]');
+  if (!a || e.button || e.ctrlKey || e.metaKey || e.shiftKey || e.altKey) return;
+  const id = a.dataset.to, to = new URL(a.href).pathname, el = document.getElementById(id);
+  e.preventDefault();
+  if (to === location.pathname && el) { history.replaceState(null, '', location.pathname); el.scrollIntoView({ behavior: 'smooth' }); }
+  else location.href = to + '?to=' + encodeURIComponent(id);
 });
-// дошли сме със стар линк (/#kontakt): отиваме на мястото и махаме # от адреса
-if (location.hash) {
-  const go = () => { const el = document.getElementById(decodeURIComponent(location.hash.slice(1))); history.replaceState(null, '', location.pathname + location.search); if (el) el.scrollIntoView({ behavior: 'instant' }); };
-  go();
+// дошли сме с /?to=kontakt или със стар линк /#kontakt: отиваме на мястото и чистим адреса
+{
+  const p = new URLSearchParams(location.search), id = p.get('to') || decodeURIComponent(location.hash.slice(1));
+  if (id) {
+    p.delete('to'); const q = p.toString();
+    history.replaceState(null, '', location.pathname + (q ? '?' + q : ''));
+    const el = document.getElementById(id); if (el) el.scrollIntoView({ behavior: 'instant' });
+  }
 }
 </script>
 </body>

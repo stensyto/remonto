@@ -47,7 +47,7 @@ footer a{color:#c9d1de}
 
 <!-- КОГАТО ИМА ФИРМА: тук да се добавят име на фирмата, ЕИК, адрес и имейл за връзка. -->
 <h2>1. Кой обработва данните</h2>
-<p>Администратор на личните данни е собственикът на RemontoPro (наричан по-долу „ние“). За всички въпроси за личните данни, включително за упражняване на правата ви, ни пишете на <a href="mailto:info@remontopro.com">info@remontopro.com</a> или през <a href="/#kontakt">формата за контакт</a> на сайта.</p>
+<p>Администратор на личните данни е собственикът на RemontoPro (наричан по-долу „ние“). За всички въпроси за личните данни, включително за упражняване на правата ви, ни пишете на <a href="mailto:info@remontopro.com">info@remontopro.com</a> или през <a href="/" data-to="kontakt">формата за контакт</a> на сайта.</p>
 
 <h2>2. Какви данни събираме и защо</h2>
 
@@ -117,7 +117,7 @@ footer a{color:#c9d1de}
 <li>да получите данните, които сте ни дали, в удобен формат или да ги прехвърлим на друг (преносимост);</li>
 <li>да оттеглите съгласие, ако обработването е на основание съгласие — без това да засяга вече извършеното.</li>
 </ul>
-<p>Пишете ни на <a href="mailto:info@remontopro.com">info@remontopro.com</a> или през <a href="/#kontakt">формата за контакт</a>. Отговаряме до 1 месец. Може да поискаме да потвърдите кой сте, за да не дадем данните ви на друг.</p>
+<p>Пишете ни на <a href="mailto:info@remontopro.com">info@remontopro.com</a> или през <a href="/" data-to="kontakt">формата за контакт</a>. Отговаряме до 1 месец. Може да поискаме да потвърдите кой сте, за да не дадем данните ви на друг.</p>
 <p>Имате право да подадете жалба до <b>Комисията за защита на личните данни</b> — <a href="https://www.cpdp.bg/" rel="noopener">www.cpdp.bg</a>.</p>
 
 <h2>7. Сигурност</h2>
@@ -130,6 +130,26 @@ footer a{color:#c9d1de}
 <p>Може да променяме тази политика — например ако добавим нова услуга. Винаги публикуваме актуалния текст на тази страница с датата, от която е в сила.</p>
 </main>
 
-<footer><div class="w"><span>© 2026 RemontoPro — програма за автосервизи</span><span><a href="/usloviya">Общи условия</a> · <a href="/poveritelnost">Поверителност</a> · <a href="/#kontakt">Контакт</a> · <a href="mailto:info@remontopro.com">info@remontopro.com</a></span></div></footer>
+<footer><div class="w"><span>© 2026 RemontoPro — програма за автосервизи</span><span><a href="/usloviya">Общи условия</a> · <a href="/poveritelnost">Поверителност</a> · <a href="/" data-to="kontakt">Контакт</a> · <a href="mailto:info@remontopro.com">info@remontopro.com</a></span></div></footer>
+<script>
+// връзки към части от страница: адресът остава чист (без # и без ?)
+document.addEventListener('click', e => {
+  const a = e.target.closest('a[data-to]');
+  if (!a || e.button || e.ctrlKey || e.metaKey || e.shiftKey || e.altKey) return;
+  const id = a.dataset.to, to = new URL(a.href).pathname, el = document.getElementById(id);
+  e.preventDefault();
+  if (to === location.pathname && el) { history.replaceState(null, '', location.pathname); el.scrollIntoView({ behavior: 'smooth' }); }
+  else location.href = to + '?to=' + encodeURIComponent(id);
+});
+// дошли сме с /?to=kontakt или със стар линк /#kontakt: отиваме на мястото и чистим адреса
+{
+  const p = new URLSearchParams(location.search), id = p.get('to') || decodeURIComponent(location.hash.slice(1));
+  if (id) {
+    p.delete('to'); const q = p.toString();
+    history.replaceState(null, '', location.pathname + (q ? '?' + q : ''));
+    const el = document.getElementById(id); if (el) el.scrollIntoView({ behavior: 'instant' });
+  }
+}
+</script>
 </body>
 </html>
