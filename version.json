@@ -1,14 +1,12 @@
 {
   "product": "Remonto",
-  "version": "1.11.2",
+  "version": "1.11.3",
   "date": "2026-10-01",
-  "url": "https://github.com/stensyto/remonto/releases/download/v1.11.2/Remonto-Setup-1.11.2.exe",
-  "size": 23672613,
-  "sha256": "5448e448b2e2e1fbdcfb6aa36c6d2bef63b4f26347834f21c6937e495df4bf35",
+  "url": "https://github.com/stensyto/remonto/releases/download/v1.11.3/Remonto-Setup-1.11.3.exe",
+  "size": 23664836,
+  "sha256": "4723194a807b62eac0e8a5b34d3d517b714355dea714f38d9f440f1c49566825",
   "notes": [
-    "Таблица с фактурите за Ажур: Настройки → Счетоводител → „Таблицата с фактурите“ → „За Ажур“ (иначе всичко остава както досега)",
-    "Лицензионно споразумение при първо инсталиране; копие в папката на програмата",
-    "Кодът на програмата в инсталатора е защитен"
+    "До счетоводителя се пращат само фактурите и известията и стойностите в тях — без оборота по работни карти"
   ],
-  "sig": "LKjAiQG17mp11wjToKXi2LI3xqI6DSdIs2G3NT9t-VUvoqeklY21WOaHtsSYxBM_2rvxsDGKMxEsvT10WoOIBw"
+  "sig": "Hxh_ZvtuuYn8QNLxYoJvS-FqPb9otGD5DJlNAMYaZ_9W3VV-3yiZm3FLvHWxN9yqetOfZ-TNc8ZmUHP2hWZkDA"
 }
