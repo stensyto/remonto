@@ -6,7 +6,9 @@
 
 - [Начало](https://remontopro.com/): възможности, снимки, лицензи, изтегляне, често задавани въпроси, форма за контакт
 - [Последна версия](https://remontopro.com/version.json): номер на версията и линк към инсталатора (подписан JSON)
-- [Инсталатори](https://github.com/stensyto/remonto/releases): всички версии
+- [Инсталатор](https://github.com/stensyto/remonto/releases/latest): последната версия
+- [Общи условия](https://remontopro.com/usloviya): пробен период, лицензи, лицензионно споразумение
+- [Политика за поверителност](https://remontopro.com/poveritelnost): лични данни; сайтът не използва бисквитки
 
 ## Лицензи
 
