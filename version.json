@@ -1,12 +1,16 @@
 {
   "product": "Remonto",
-  "version": "1.12.0",
+  "version": "1.12.1",
   "date": "2026-10-01",
-  "url": "https://github.com/stensyto/remonto/releases/download/v1.12.0/RemontoPro-Setup-1.12.0.exe",
-  "size": 23667377,
-  "sha256": "309cf28a722e2bdaf8a106efe1e45034c5892287153fa658f9de6040b0775fb4",
+  "url": "https://github.com/stensyto/remonto/releases/download/v1.12.1/RemontoPro-Setup-1.12.1.exe",
+  "size": 23670642,
+  "sha256": "e1da322c82b724f6311bf2f31fb651c7fe3980910b50530ade11294df1b02890",
   "notes": [
-    "Програмата вече се казва RemontoPro — данните, лицензът и настройките са си същите"
+    "Работна карта: превключвател „цените са с ДДС / без ДДС“ — сменя се и за вече направена карта",
+    "Фактура от карта с цени с ДДС: сумата е точно като в картата (62 + 50 → 93,33 + 18,67 ДДС = 112,00 €)",
+    "Фактура: колона „Ед. цена с ДДС“ — пишете 60 и цената без ДДС се попълва сама",
+    "Ново поле „TecDoc №“ на колата — в работната карта, в страницата на колата и в „+ Нова кола“",
+    "Търсене по TecDoc № — в горното търсене, таблото, „Автомобили“ и „Работни карти“"
   ],
-  "sig": "A45qU39MNdXv7EDslJt26z6cai0YRSOMHRtdw51BvwyhS955XnUqhFd_BbaYv5QpYCiDI7RzJgeU9WkNJR1AAA"
+  "sig": "eMgy_6KDSYrG8O1jHNqNU0h7OC_MQvKF4haUPLX5pNIcIRudUSMwtvP7ihA7ZwHdaNtvc-3LhBcBWApyv95YAw"
 }
