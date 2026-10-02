@@ -1,12 +1,14 @@
 {
   "product": "Remonto",
-  "version": "1.12.2",
-  "date": "2026-10-01",
-  "url": "https://github.com/stensyto/remonto/releases/download/v1.12.2/RemontoPro-Setup-1.12.2.exe",
-  "size": 23668232,
-  "sha256": "0ef9908b3493cc17164ccf39683439142cfdbc675f22207ae553a597fe809c13",
+  "version": "1.12.3",
+  "date": "2026-10-02",
+  "url": "https://github.com/stensyto/remonto/releases/download/v1.12.3/RemontoPro-Setup-1.12.3.exe",
+  "size": 23663158,
+  "sha256": "0053798cf5c5f7240296f2f00a49cada692f45011ea8a2abe5998e51725e076e",
   "notes": [
-    "Подобрения в стабилността на програмата и дребни поправки"
+    "По-добро четене на талона — моделът и при Mercedes, Alfa Romeo, Land Rover; номерът не се губи при снимка накриво",
+    "Предупреждение, ако снимката на талона е твърде малка (например пратена по Viber)",
+    "По-кратка история на версиите"
   ],
-  "sig": "zbqu2rKKstHXzl9I8YSGELrffO_pXhVIw5DWDb9siKmDbQIl2eKDZjmSYcC1Vs5ont7VZB3Ffjisbe8Gl3LKAg"
+  "sig": "Gb2oCLOqBFK1KgDl3y1HfP-QCFR8Mi8xWJcOiGH5o2vnsYzgKgnVKWwohvWQEjXEO7e1uprC0xoYhf-NzjLzDA"
 }
